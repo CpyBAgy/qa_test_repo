@@ -15,3 +15,9 @@ def auth_client(user):
     client = APIClient()
     client.force_authenticate(user=user)
     return client
+
+
+@pytest.fixture
+def lesson(user):
+    """Создаёт урок, связанный с пользователем."""
+    return baker.make('lessons.Lesson', author=user, title='Test Lesson')
